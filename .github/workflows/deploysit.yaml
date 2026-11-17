@@ -7,7 +7,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - name: "get code"
+            - name: "get code for testing"
               run: |
                   echo "clone repository"
                   echo "${{tojason(github)}}"
