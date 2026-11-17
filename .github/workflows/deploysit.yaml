@@ -1,8 +1,17 @@
 name: Deploy Site  # name of workflow
 #on: [push, workflow_dispatch]   #when this workflow should run
+# on:
+#     - push
+#     - workflow_dispatch
 on:
-    - push
-    - workflow_dispatch
+    push:
+        branches:
+            - main
+            - test
+        paths-ignore:
+            - README.md
+            - .github/workflows/*
+    workflow_dispatch:
 jobs:
     test:
         runs-on: ubuntu-latest
