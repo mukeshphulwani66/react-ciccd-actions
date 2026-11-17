@@ -1,0 +1,14 @@
+name: Deploy Site  # name of workflow
+#on: [push, workflow_dispatch]   #when this workflow should run
+on:
+    - push
+    - workflow_dispatch
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "get code"
+              run: |
+                  echo "clone repository"
+                  echo "${{tojason(github)}}"
+                  git clone https://github.com/${{ github.repository }}.git
