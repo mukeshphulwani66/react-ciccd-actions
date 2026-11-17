@@ -25,3 +25,26 @@ jobs:
             - name: install dependencies
               run: |
                   npm ci
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: "get code for deployment"
+              uses: actions/checkout@v7
+
+            - name: "install node 20"
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20  
+            - name: print node version
+              run: |
+                  node -v
+            - name: install dependencies
+              run: |
+                  npm ci
+            - name: build project
+              run: |
+                  npm run build
+            - name: deploy project
+              run: |
+                  echo "Deploying project..."
