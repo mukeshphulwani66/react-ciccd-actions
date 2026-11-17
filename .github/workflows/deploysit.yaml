@@ -10,5 +10,5 @@ jobs:
             - name: "get code for testing"
               run: |
                   echo "clone repository"
-                  echo "${{tojason(github)}}"
+                  echo "${{ toJSON(github) }}"
                   git clone https://github.com/${{ github.repository }}.git
