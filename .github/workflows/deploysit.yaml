@@ -39,11 +39,11 @@ jobs:
             - name: install dependencies
               run: |
                   npm ci
-    deploy:
+    build:
         needs: test
         runs-on: ubuntu-latest
         steps:
-            - name: "get code for deployment"
+            - name: "get code for build"
               uses: actions/checkout@v7
 
             - name: "install node 20"
@@ -64,6 +64,22 @@ jobs:
             - name: build project
               run: |
                   npm run build
+            - name: upload build artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  path: |
+                      dist
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: build
+                  path: |
+                      dist
             - name: deploy project
               run: |
                   echo "Deploying project..."
