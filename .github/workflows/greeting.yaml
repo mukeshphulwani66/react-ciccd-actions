@@ -1,11 +1,8 @@
-name: Greeting
-# on: push
-on: workflow_dispatch
+name: Greeting  # name of workflow 
+on: push    #when this workflow should run
 jobs:
-    greet:
-        runs-on: ubuntu-latest
-        steps:
-            - name: "greet user"
-              run: echo "Hello world!"
-
-
+  greet:       #name of job 
+    runs-on: ubuntu-latest  # job environment to run on
+    steps:
+      - name: "greet user" 
+        run: echo "Hello world!"
