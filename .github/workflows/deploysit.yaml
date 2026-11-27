@@ -1,4 +1,5 @@
 name: Deploy Site  # name of workflow
+# Yaad rakhne ka tarika: push = code push hua toh pipeline chali. workflow_dispatch = tumne button dabaya toh pipeline chali.
 #on: [push, workflow_dispatch]   #when this workflow should run
 # on:
 #     - push
